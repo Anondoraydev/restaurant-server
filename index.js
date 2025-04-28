@@ -45,7 +45,7 @@ async function run() {
 
     //carts collection
 
-    app.post('carts', async (req, res) => {
+    app.post('/carts', async (req, res) => {
       const cartItem = req.body;
       const result = await cartsCollection.insertOne(cartItem);
       res.send(result);
@@ -65,7 +65,6 @@ run().catch(console.dir);
 
 app.get('/', (req, res) => {
   res.send('boss is sitting');
-  
 });
 
 app.listen(port, () => {
