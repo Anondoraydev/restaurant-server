@@ -96,12 +96,13 @@ async function run() {
       const query = { email: user.email };
       const existingUser = await userCollection.findOne(query);
       if (existingUser) {
+        
         return res.send({ message: 'User already exists', insertedId: null });
       }
       const result = await userCollection.insertOne(user);
       res.send(result);
     });
-    
+
 
     app.patch(
       '/users/admin/:id',
