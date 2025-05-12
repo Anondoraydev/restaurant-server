@@ -96,13 +96,11 @@ async function run() {
       const query = { email: user.email };
       const existingUser = await userCollection.findOne(query);
       if (existingUser) {
-        
         return res.send({ message: 'User already exists', insertedId: null });
       }
       const result = await userCollection.insertOne(user);
       res.send(result);
     });
-
 
     app.patch(
       '/users/admin/:id',
@@ -133,7 +131,7 @@ async function run() {
       const result = await menuCollection.find().toArray();
       res.send(result);
     });
-
+ 
     //reviews data
 
     app.get('/reviews', async (req, res) => {
