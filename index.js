@@ -131,7 +131,13 @@ async function run() {
       const result = await menuCollection.find().toArray();
       res.send(result);
     });
- 
+
+    app.post('/menu', async (req, res) => {
+      const item = req.body;
+      const result = await menuCollection.insertOne(item);
+      res.send(result);
+    });
+
     //reviews data
 
     app.get('/reviews', async (req, res) => {
@@ -166,7 +172,6 @@ async function run() {
     console.log(
       'Pinged your deployment. You successfully connected to MongoDB!'
     );
-    
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
